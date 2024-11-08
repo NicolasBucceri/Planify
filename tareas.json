@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Mirar una serie",
+        "completed": false 
+    },
+    {
+        "id": 2,
+        "name": "Ir al cine",
+        "completed": false 
+    },
+    {
+        "id": 3,
+        "name": "Tomar mates",
+        "completed": false 
+    }
+]

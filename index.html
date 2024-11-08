@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planify</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1><i class="fa-solid fa-list-check"></i> Planify</h1>
+    </header>
+    <main id="appEccomerce">
+      <div class="cardBuscador">
+        <div class="contenedorBuscador">
+          <input v-model="search" type="text" @input="performSearch" :class="{ 'searching': search.length > 0 }" class="buscador" placeholder="Buscar"/>
+          <button v-on:click="performSearch" type="button" class="botonBuscador">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div v-if="search.length > 0 && searchResults.length > 0" :class="['resultadosBuscador', { show: search.length > 0 && searchResults.length > 0 }]">
+          <ul>
+            <li v-for="(tarea, index) in searchResults" :key="tarea.id" @click="goToTask(tarea.id)" :class="{'buscadorMarcado': tarea.id === highlightedTaskId}">
+              <strong>{{ tarea.name }}</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div v-if="showAlert" class="alert alert-danger alertaError" role="alert">
+        <i class="fa-solid fa-triangle-exclamation"></i> El nombre de la tarea no puede estar vacío.
+      </div>
+
+      <div class="cardCrear">
+        <input v-model="name" placeholder="Agrega una tarea" type="text" class="contenedorCreador"/>
+        <button v-on:click="addTarea" type="button" class="botonCrear">Crear</button>
+      </div>
+
+      <div class="card">
+        <h2><i class="fa-regular fa-calendar"></i> Tareas pendientes</h2>
+        <h4>Cantidad <span v-text="cantPendientes"></span></h4>
+        <ul>
+          <li v-for="(tarea, index) in tareas" v-bind:key="tarea.id" v-on:click="toggleTarea(index)" v-bind:class="{ 'buscadorMarcado': tarea.id === highlightedTaskId }">
+            <strong v-text="tarea.name"></strong>
+            <i class="btn-update fa fa-check-circle" v-bind:class="{'fa-check-circle-o': !tarea.terminada}"></i>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2><i class="fa-regular fa-calendar-check"></i> Tareas terminadas</h2>
+        <h4>Cantidad <span v-text="cantTerminadas"></span></h4>
+        <ul>
+          <li v-for="(tarea, index) in tareasTerminadas" :key="tarea.id" v-bind:class="{ 'buscadorMarcado': tarea.id === highlightedTaskId }">
+            <span v-if="editTaskId !== tarea.id">
+              <strong>{{ tarea.name }}</strong>
+              <i class="btn-detalle fa-solid fa-clock-rotate-left" title="Volver a tarea pendiente" @click="mostrarDetalle(tarea.id)"></i>
+              <i class="btn-editar fa-solid fa-pen-to-square" title="Editar la tarea" @click="editarTarea(tarea.id, true)"></i>
+              <i class="btn-delete fa-solid fa-trash" title="Eliminar la tarea" @click="deleteTareaTerminada(index)"></i>
+            </span>
+            <span v-else>
+              <input class="campoEditar" type="text" v-model="editedName" />
+              <button class="botonEditar" @click="guardarEdicion">
+                Guardar
+              </button>
+              <button class="botonEditar" @click="cancelarEdicion">
+                Cancelar
+              </button>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer>
+      <p>DV | Aplicaciones para dispositivos móviles</p>
+    </footer>
+
+    <script src="appEccomerce.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

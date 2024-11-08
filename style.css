@@ -1,0 +1,368 @@
+/* Etiquetas Generales */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: #0f0c29;
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+}
+
+main {
+  min-height: 10vh;
+  width: 70%;
+  margin: 0 auto;
+}
+
+header {
+  height: 20vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2 {
+  margin: 1rem 0;
+  font-size: 20px;
+}
+
+ul {
+  margin: 2rem;
+}
+
+input {
+  border-color: rgb(116, 116, 116);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+footer {
+  font-size: 12px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background-color: rgb(32, 31, 31);
+  color: aliceblue;
+  padding-right: 2rem;
+}
+
+/*Card Buscador*/
+.cardBuscador {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 2px;
+  width: 100%;
+}
+
+.contenedorBuscador {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.buscador {
+  flex: 1;
+  background-color: #f0f0f0;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.buscador::placeholder {
+  font-size: 12px;
+  color: #888;
+  opacity: 1;
+}
+
+.botonBuscador {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.botonBuscador i {
+  font-size: 16px;
+  color: #000000;
+}
+
+.resultadosBuscador {
+  position: relative;
+  width: 60%;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  z-index: 1000;
+  padding: 10px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.resultadosBuscador.show {
+  max-height: 300px;
+  opacity: 1;
+  overflow-y: auto;
+}
+
+.resultadosBuscador ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.resultadosBuscador[style*="display: none"] {
+  opacity: 0;
+}
+
+.buscadorMarcado {
+  color: #5c5b5b;
+  font-weight: bold;
+}
+
+/*Card Crear Tareas*/
+.cardCrear {
+  width: 50%;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.contenedorCreador {
+  background-color: #f0f0f0;
+  flex: 1;
+  border: none;
+  outline: none;
+}
+
+.contenedorCreador::placeholder {
+  font-size: 11px;
+  color: #888;
+  opacity: 1;
+}
+
+.botonCrear {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 11px;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.alertaError {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 10px;
+}
+
+/*Tarea Pendientes y Tarea Terminadas */
+
+.card {
+  background-color: #f0f0f0;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 10px #4c4b4b8a;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: slide-up 0.8s ease-out;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+.card h2 {
+    font-size: 18px;
+}
+.card h4 {
+    font-size: 12px;
+}
+.card li {
+    font-size: 12px;
+}
+
+.btn-delete {
+  color: rgb(172, 40, 40);
+  cursor: pointer;
+}
+
+.btn-detalle {
+  color: rgb(46, 66, 180);
+  cursor: pointer;
+}
+
+.btn-update {
+  color: rgb(36, 149, 83);
+  cursor: pointer;
+}
+
+.btn-editar {
+  color: rgb(228, 228, 0);
+  cursor: pointer;
+}
+
+.botonEditar {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 11px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px; 
+}
+.campoEditar {
+    padding: 3px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+}
+} 
+
+/* Estilos generales para pantallas pequeñas */
+@media (max-width: 768px) {
+    main {
+      width: 90%;
+    }
+  
+    header {
+      height: auto;
+      padding: 1rem;
+      text-align: center;
+    }
+  
+    h1,
+    h2 {
+      font-size: 18px;
+    }
+  
+    .cardCrear {
+      width: 80%;
+      flex-direction: column;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+  
+    .contenedorCreador {
+
+      margin-bottom: 10px;
+    }
+  
+    .botonCrear {
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    .card {
+      padding: 1rem;
+    }
+  
+    footer {
+      font-size: 10px;
+      justify-content: center;
+      padding: 1rem;
+    }
+  
+    .resultadosBuscador {
+      width: 100%;
+    }
+  }
+  
+  /* Estilos para pantallas aún más pequeñas (móviles) */
+  @media (max-width: 480px) {
+    h1,
+    h2 {
+      font-size: 16px;
+    }
+  
+    ul {
+      margin: 1rem;
+    }
+  
+    .botonBuscador i {
+      font-size: 14px;
+    }
+  
+    .card {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      font-size: 10px;
+    }
+
+    .cardCrear {
+      width: 98%;
+    }
+  
+    .btn-delete,
+    .btn-detalle,
+    .btn-update,
+    .btn-editar {
+      font-size: 10px;
+    }
+    
+    .botonEditar {
+      font-size: 10px;
+      padding: 4px;
+    }
+  
+    footer {
+      font-size: 9px;
+      padding: 0.5rem;
+    }
+  }
+  
