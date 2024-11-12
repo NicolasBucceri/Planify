@@ -13,7 +13,7 @@ body {
 }
 
 main {
-
+  min-height: 70vh;
   width: 70%;
   margin: 0 auto;
 }
