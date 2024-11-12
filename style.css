@@ -26,12 +26,6 @@ header {
   align-items: center;
 }
 
-h1,
-h2 {
-  margin: 1rem 0;
-  font-size: 20px;
-}
-
 ul {
   margin: 2rem;
 }
@@ -44,6 +38,7 @@ input {
 }
 
 footer {
+  width: 100%;
   font-size: 12px;
   height: 10vh;
   display: flex;
